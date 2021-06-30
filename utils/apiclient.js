@@ -9,3 +9,12 @@ function getProducts() {
     })
 }
 
+function getOneProduct(id) {
+ return fetch(`http://localhost:3000/api/cameras/${id}`)
+    .then(function(httpBodyResponse) {
+      return httpBodyResponse.json()
+    })
+    .catch(function(error) {
+      alert(error)
+    })
+}
