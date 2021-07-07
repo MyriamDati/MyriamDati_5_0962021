@@ -56,15 +56,14 @@
     </header>
   
 <!--formulaire du panier-->
-    <div class="jumbotron container-fluid">
-      <h2 class="text-center">Votre sélection</h2>
-    
-    <table class="table">
+  <div class="jumbotron container-fluid">
+      <h2 class="text-center">Votre panier</h2>
+
+    <table class="table card_recap container">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Article</th>
           <th scope="col">Quantité</th>
-          <th scope="col">Prix unitaire</th>
           <th scope="col">Prix total</th>
         </tr>
       </thead>
@@ -77,43 +76,42 @@
       <tr class="table-dark">
         <th scope="col"></th>
         <th scope="col"></th>
-        <th scope="col"></th>
         <th scope="col">MONTANT TOTAL</th>
       </tr>
     </table>
 
 
-      <form id="formulaire" method="POST" class="w-50">
-        <h3 class="informations">Informations personnelles</h3>
-        <div class="form-group">
-          <label for="nom">Nom</label>
-          <input id="nom" type="text" class="form-control" placeholder="Entrer votre nom" required>
+    <form id="formulaire" method="POST" class="w-50">
+      <h3 class="informations text-dark">Informations personnelles</h3>
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input id="nom" type="text" class="form-control" placeholder="Entrer votre nom" required>
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input id="prenom" type="text" class="form-control" placeholder="Entrer votre prénom" required>
+      </div>
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input id="adresse" type="text" class="form-control" placeholder="Entrer votre adresse" required>
+      </div>
+      <div class="city row">
+        <div class="form-group col-6">
+          <label for="codepostal">Code Postal</label>
+          <input id="codepostal" type="text" class="form-control" placeholder="Entrer votre Code Postal" required>
         </div>
-        <div class="form-group">
-          <label for="prenom">Prénom</label>
-          <input id="prenom" type="text" class="form-control" placeholder="Entrer votre prénom" required>
+        <div class="form-group col-6">
+          <label for="ville">Ville</label>
+          <input id="ville" type="text" class="form-control" placeholder="Entrer votre ville" required>
         </div>
-        <div class="form-group">
-          <label for="adresse">Adresse</label>
-          <input id="adresse" type="text" class="form-control" placeholder="Entrer votre adresse" required>
-        </div>
-        <div class="city row">
-          <div class="form-group col-6">
-            <label for="codepostal">Code Postal</label>
-            <input id="codepostal" type="text" class="form-control" placeholder="Entrer votre Code Postal" required>
-          </div>
-          <div class="form-group col-6">
-            <label for="ville">Ville</label>
-            <input id="ville" type="text" class="form-control" placeholder="Entrer votre ville" required>
-          </div>
         </div>
         <div class="form-group">
           <label for="mail">Email</label> 
           <input id="mail" type="text" class="form-control" placeholder="Entrer votre adresse mail" required>
       </div>
       <a href="confirmation.html" type="submit" class="btn btn-dark">Confirmer mon achat</a>
-      </form>
-    </div>
+    </form>
+  </div>
 
 <!--footer-->
     <footer class="bg-dark text-white">
@@ -127,6 +125,8 @@
   </main>
 
 <!--script javascript-->
+<script src="templates/templates.js"></script>
+<script src="utils/apiclient.js"></script>
 <script src="Javascript/basket.js"></script>
 </body>
 </html>
