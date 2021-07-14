@@ -24,3 +24,19 @@ function getOneProduct(id) {
     })
 }
 
+//je récupère les données de l'utilisateur 
+function sendData(e) {
+ return fetch("http://localhost:3000/api/order", {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/JSON'
+  },
+  body: JSON.stringify(sendTo)
+})
+  .then(function(response) {
+      return response.json();
+    })
+    .catch(function(error) {
+      alert(error);
+    });
+} 

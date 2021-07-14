@@ -202,12 +202,4 @@ if(nameCheck() && prenomCheck() && adressCheck() && cityCheck() &&cpCheck() &&ma
 
 })
 
-function sendData(e) {
-  fetch("http://localhost:3000/api/order", {
-  method: "POST",
-  headers: {
-    'Content-Type': 'application/JSON'
-  },
-  body: JSON.stringify(sendTo)
-});
-} 
+
