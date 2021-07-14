@@ -1,3 +1,8 @@
+/* CSS Général*/
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 /* CSS Page d'acceuil*/
 .card-body{
   width: 30%;

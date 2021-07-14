@@ -6,6 +6,7 @@ function getProductTemplate(product) {
     <div class="card-information">
       <h5 class="card-price" id="price">${product.price/100} €</h5>
     </div>
+    <button id="btn-product" type="submit" name="btn-product" href="product.html" class="btn-product">Voir le produit</button>
   </a>`
 }
 
@@ -16,31 +17,33 @@ function getOneProductTemplate(product) {
       <div class="img_product">
         <img src="${product.imageUrl}" alt="appareil photo">
       </div>
-      <div id="description-card" class="description_card">
+      <div id="description_card" class="description_card">
         <ul>
           <li class="name_product">${product.name}</li>
           <li class="description_product">${product.description}</li>
-          <li class="price_product">${product.price/100} €</li>
+          <li class="price_product pt-2">${product.price/100} €</li>
         </ul>
         <form>
-          <label for="option-produit">Lenses:</label>
+          <label for="option-produit" class= "ml-2 text-white">Choississez votre lentille :</label>
           <select name="option-produit" id="option-produit">
             <option value="lenses_1">${product.lenses}€</option>
             <option value="lenses_2">${product.lenses}€</option>
             <option value="lenses_3">${product.lenses}€</option>
           </select>
         </form>
-        <label for="q">Quantité: </label>
-          <select id="qt" name="q">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        <button onclick="window.location.href = 'basket.html';">Ajouter au panier</button>
+        <form methode="POST" action="">
+          <label for="quantity" class= "quantity ml-2 text-white">Quantité : </label>
+            <select name="label" id="quantity">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+        </form>
+
+        <button id="basket" type="submit" name="basket" class="btn-panier m-2">Ajouter au panier</button>
       </div>
     </div>
 </div>`
 }
-

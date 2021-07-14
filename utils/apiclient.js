@@ -24,17 +24,3 @@ function getOneProduct(id) {
     })
 }
 
-
-// je recupère les données de la commande
-function getOrder() {
-  return fecth(`http://localhost:3000/api/cameras/order`)
-    .then(function(response) {
-       if(response.ok){
-        return response.json()
-        }
-    })
-    .catch(function(error) {
-      alert(error);
-    })
-}
-
