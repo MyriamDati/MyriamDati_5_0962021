@@ -25,7 +25,7 @@ function getOneProduct(id) {
 }
 
 //je récupère les données de l'utilisateur 
-function sendData(e) {
+function sendData(sendTo) {
  return fetch("http://localhost:3000/api/order", {
   method: "POST",
   headers: {
