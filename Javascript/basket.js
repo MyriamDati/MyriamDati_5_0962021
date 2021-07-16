@@ -120,11 +120,14 @@ btnForm.addEventListener("click", (event) =>{
 
   localStorage.setItem("formValues", JSON.stringify(formValues));
 
+
 // On envoie les données dans le local storage
 const sendTo = {
-  productAdded,
+  totalBasket,
   formValues
 };
+
+sendData(sendTo);
 
 // On ajoute à une variable la clé 
 const formDataLS = localStorage.getItem("formValues");
@@ -213,3 +216,4 @@ if(nameCheck() && prenomCheck() && adressCheck() && cityCheck() &&cpCheck() &&ma
 };
 
 });
+
