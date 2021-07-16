@@ -25,18 +25,21 @@ function getOneProduct(id) {
 }
 
 //je récupère les données de l'utilisateur 
-function sendData(sendTo) {
- return fetch("http://localhost:3000/api/order", {
+function sendData() {
+  return fetch("http://localhost:3000/api/cameras/order", {
   method: "POST",
   headers: {
     'Content-Type': 'application/JSON'
   },
-  body: JSON.stringify(sendTo)
-})
+  body: JSON.stringify(sendTo).value
+  })
   .then(function(response) {
-      return response.json();
+    if(response.ok){
+        return response.json()
+        }
     })
     .catch(function(error) {
       alert(error);
-    });
-} 
+    })
+};
+

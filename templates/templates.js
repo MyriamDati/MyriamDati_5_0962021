@@ -47,3 +47,13 @@ function getOneProductTemplate(product) {
     </div>
 </div>`
 }
+
+//Création du template de la page de confirmation
+function getMessageOrderTemplate() {
+  return `
+    <div class="messageOrder col-md-3">
+      <p>Bonjour ${product.name},</p>
+      <p>Nous vous remercions pour votre achat !</p>
+      <p>Votre commande n° ${product.orderId} d'un montant de ${sum}€ sera traitée dans les meilleures délais</p>
+  </div>`
+}

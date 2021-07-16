@@ -1,3 +1,5 @@
+//-------------------Panier-------------------
+
 //on déclare la variable dans la quelle on va stocker les données
 let productAdded = JSON.parse(localStorage.getItem("product"));
 console.log(productAdded);
@@ -12,15 +14,22 @@ if(productAdded === null){
 tableBasket.innerHTML = emptyBasket;
 }
 else{
-  let fullBasket = [];
+  let fullBasket = `
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Prix</th>
+      </tr>
+    </thead> `
   for(i = 0; i <productAdded.length; i++){
-    fullBasket = fullBasket + `
+    fullBasket += `
       <tbody>
         <tr>
           <tr class="table-dark border border-dark">
-            <th scope="col">Nom du produit: ${productAdded[i].name}</th>
-            <th scope="col">Quantité ajouté: ${productAdded[i].quantity}</th>
-            <th scope="col">Prix total: ${productAdded[i].price} €</th>
+            <th scope="col">${productAdded[i].name}</th>
+            <th scope="col">${productAdded[i].quantity}</th>
+            <th scope="col">${productAdded[i].price} €</th>
           </tr>
         </tr>
       </tbody>`;
@@ -35,13 +44,11 @@ else{
     let priceProduct = productAdded[j].price;
 
     totalBasket.push(priceProduct)
-    console.log(totalBasket);
   }
 
   //addition du prix pour obtenir le montant total
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   const sum = totalBasket.reduce(reducer,0);
-  console.log(sum);
 
   const showTotal = `
   <tr class="text-dark border border-dark text-right">
@@ -51,7 +58,11 @@ else{
 
   tableBasket.insertAdjacentHTML("beforeend", showTotal);
 
-//Formulaire d'informations personnelles 
+
+
+
+
+//-----------------------------Formulaire----------------------------- 
 const showForm = () => {
 const formUser = document.querySelector("#container-produits-panier");
 
@@ -84,7 +95,7 @@ const getForm = `
           <label for="mail">Email</label> 
           <input id="mail" type="text" class="form-control" placeholder="Entrer votre adresse mail" required>
       </div>
-      <a type="submit" class="btn btn-dark">Confirmer mon achat</a>
+      <a type="submit" class="btn btn-dark text-white">Confirmer mon achat</a>
     </form>
   `;
 
@@ -95,7 +106,6 @@ showForm();
 
 //On créé le formulaire de renvoie
 const btnForm = document.querySelector(".btn");
-console.log(btnForm);
 
 //on récupère les données du formulaire pour le local storage
 btnForm.addEventListener("click", (event) =>{
@@ -121,7 +131,10 @@ const formDataLS = localStorage.getItem("formValues");
 //conversion en JS
 const formDataLSObj = JSON.parse(formDataLS);
 
-// On verifie les données entrée dans le formulaire en contrôlant avec les valeurs
+
+
+
+//----------------Vérification des données du formulaire et leurs valeurs entrées----------------
 const checkString = (value) => {
   return /^[A-Za-z\s]{0,20}$/.test(value);
 }
@@ -134,7 +147,6 @@ const checkAdress = (value) => {
 const checkMail = (value) => {
   return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
 }
-
 
 function nameCheck() {
   const nameUser = formValues.nom;
@@ -200,6 +212,4 @@ if(nameCheck() && prenomCheck() && adressCheck() && cityCheck() &&cpCheck() &&ma
     localStorage.setItem("formValues", JSON.stringify(formValues));
 };
 
-})
-
-
+});

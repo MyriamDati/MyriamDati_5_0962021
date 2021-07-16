@@ -20,6 +20,7 @@ getOneProduct(id)
 
 // On créée la variables avec les infos à envoyer au panier
     let addQuantity = {
+      image: product.imageUrl,
       name: product.name,
       id: product._id,
       quantity: quantity,
