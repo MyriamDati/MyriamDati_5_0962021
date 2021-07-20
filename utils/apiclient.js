@@ -24,22 +24,23 @@ function getOneProduct(id) {
     })
 }
 
-// //je récupère les données de l'utilisateur 
-// function sendData(sendTo) {
-//   return fetch("http://localhost:3000/api/cameras/order", {
-//     method: "POST",
-//     headers: {
-//       'Content-Type': 'application/JSON'
-//     },
-//     body: JSON.stringify(sendTo),
-//   })
-//   .then(function(response) {
-//        if(response.ok){
-//         return response.json()
-//         }
-//     })
-//   .catch(function(error) {
-//       alert(error);
-//     })
-// };
 
+// //je récupère les données de l'utilisateur 
+function sendData(sendTo) {
+return fetch("http://localhost:3000/api/cameras/order", {
+    method: "POST",
+    headers: {
+      'Content-Type': "application/JSON"
+    },
+    body: JSON.stringify(sendTo),
+})
+  .then(function(response) {
+       if(response.ok){
+        return response.json()
+        }
+    })
+  .catch(function(error) {
+      alert(error);
+    })
+};
+console.log(sendData);

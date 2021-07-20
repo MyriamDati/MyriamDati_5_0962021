@@ -2,7 +2,6 @@
 
 //on déclare la variable dans la quelle on va stocker les données
 let productAdded = JSON.parse(localStorage.getItem("product"));
-console.log(productAdded);
 
 //on crée le tableau des valeurs vide ou des valeurs ajoutés par l'utilisateur
 const tableBasket = document.querySelector(".card_recap");
@@ -32,7 +31,7 @@ else{
             <th scope="col">${productAdded[i].price} €</th>
           </tr>
         </tr>
-      </tbody>`;
+      </tbody>`
     tableBasket.innerHTML = fullBasket;
   }
   };
@@ -95,7 +94,7 @@ const getForm = `
           <label for="mail">Email</label> 
           <input id="mail" type="text" class="form-control" placeholder="Entrer votre adresse mail" required>
       </div>
-      <a type="submit" class="btn btn-dark text-white">Confirmer mon achat</a>
+      <a href="confirmation.html" type="submit" class="btn btn-dark text-white">Confirmer mon achat</a>
     </form>
   `;
 
@@ -119,14 +118,7 @@ btnForm.addEventListener("click", (event) =>{
   };
 
   localStorage.setItem("formValues", JSON.stringify(formValues));
-  localStorage.setItem("totalBasket", JSON.stringify(totalBasket));
 
-// On envoie les données dans le local storage
-const sendTo = {
-  totalBasket,
-  formValues
-};
-console.log(sendTo);
 
 
 // On ajoute à une variable la clé 
@@ -213,6 +205,10 @@ function mailCheck() {
 if(nameCheck() && prenomCheck() && adressCheck() && cityCheck() &&cpCheck() &&mailCheck()) {
     localStorage.setItem("formValues", JSON.stringify(formValues));
 };
+
+
+
+
 
 });
 
