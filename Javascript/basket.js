@@ -63,7 +63,7 @@ else{
 
 //-----------------------------Formulaire----------------------------- 
 const showForm = () => {
-const formUser = document.querySelector("#container-produits-panier");
+const formUser = document.getElementById("container-produits-panier");
 
 const getForm = `
   <form id="formulaire" method="POST" class="w-50 border border-secondary p-3 mt-5">
@@ -80,12 +80,7 @@ const getForm = `
         <label for="adresse">Adresse</label>
         <input id="adresse" type="text" class="form-control" placeholder="Entrer votre adresse" required>
       </div>
-      <div class="city row">
-        <div class="form-group col-6">
-          <label for="codePostal">Code Postal</label>
-          <input id="codePostal" type="text" class="form-control" placeholder="Entrer votre Code Postal" required>
-        </div>
-        <div class="form-group col-6">
+        <div class="form-group">
           <label for="ville">Ville</label>
           <input id="ville" type="text" class="form-control" placeholder="Entrer votre ville" required>
         </div>
@@ -94,7 +89,7 @@ const getForm = `
           <label for="mail">Email</label> 
           <input id="mail" type="text" class="form-control" placeholder="Entrer votre adresse mail" required>
       </div>
-      <a href="confirmation.html" type="submit" class="btn btn-dark text-white">Confirmer mon achat</a>
+      <a type="submit" class="btn btn-dark text-white">Confirmer mon achat</a>
     </form>
   `;
 
@@ -109,12 +104,11 @@ const btnForm = document.querySelector(".btn");
 //on récupère les données du formulaire pour le local storage
 btnForm.addEventListener("click", (event) =>{
   const formValues = {
-    nom: document.querySelector("#nom").value,
-    prenom: document.querySelector("#prenom").value,
-    adresse: document.querySelector("#adresse").value,
-    codePostal: document.querySelector("#codePostal").value,
-    ville: document.querySelector("#ville").value,
-    mail: document.querySelector("#mail").value
+    firstName: document.querySelector("#nom").value,
+    lastName: document.querySelector("#prenom").value,
+    address: document.querySelector("#adresse").value,
+    city: document.querySelector("#ville").value,
+    email: document.querySelector("#mail").value
   };
 
   localStorage.setItem("formValues", JSON.stringify(formValues));
@@ -170,7 +164,7 @@ function adressCheck() {
     alert("Merci de remplir le champs avec des lettres entre 3 et 100 caractères");
     return false;
   }
-}
+};
 
 function cityCheck() {
   const cityUser = formValues.ville;
@@ -182,18 +176,9 @@ function cityCheck() {
   }
 };
 
-function cpCheck() {
-  const cpUser = formValues.codePostal;
-  if(checkNumb(cpUser)) {
-    return true;
-  }else{
-    alert("Merci de remplir le champs avec 5 chiffres");
-    return false;
-  }
-};
 
 function mailCheck() {
-  const mailUser = formValues.mail;
+  const mailUser = formValues.email;
   if(checkMail(mailUser)) {
     return true;
   }else{
@@ -202,13 +187,24 @@ function mailCheck() {
   }
 };
 
-if(nameCheck() && prenomCheck() && adressCheck() && cityCheck() &&cpCheck() &&mailCheck()) {
+if(nameCheck() && prenomCheck() && adressCheck() && cityCheck() && mailCheck()) {
     localStorage.setItem("formValues", JSON.stringify(formValues));
+
+//valeurs du formulaire et produits sélectionnés dans un tableau
+const dataPost = {
+  products: ["5be1ed3f1c9d44000030b061", "5be1ef211c9d44000030b062"],
+  contact: formValues
 };
 
-
-
-
+//renvoie à la page de confirmation
+sendData(dataPost)
+  .then(confirm  => {
+    window.location.replace("confirmation.html?orderId=" + confirm.orderId);
+  })
+  .catch(function(error) {
+      alert(error);
+  })
+};
 
 });
 

@@ -8,10 +8,10 @@ getOneProduct(id)
     document.getElementById('id').innerHTML = getOneProductTemplate(product);
 
 //récupération des infos de la cartes
-  const basket = document.querySelector("#quantity");
+  const basket = document.getElementById("quantity");
 
 // Sélection du bouton ajouter dans mon panier 
-  let btn_ajouter = document.querySelector("#basket");
+  let btn_ajouter = document.getElementById("basket");
 
 // On ajout l'écouteur d'événement au clique sur le bouton ajouter au panier
   btn_ajouter.addEventListener("click", (event) => {
