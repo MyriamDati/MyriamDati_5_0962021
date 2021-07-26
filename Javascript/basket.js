@@ -114,12 +114,10 @@ btnForm.addEventListener("click", (event) =>{
   localStorage.setItem("formValues", JSON.stringify(formValues));
 
 
-
 // On ajoute à une variable la clé 
 const formDataLS = localStorage.getItem("formValues");
 //conversion en JS
 const formDataLSObj = JSON.parse(formDataLS);
-
 
 
 //----------------Vérification des données du formulaire et leurs valeurs entrées----------------
@@ -192,9 +190,10 @@ if(nameCheck() && prenomCheck() && adressCheck() && cityCheck() && mailCheck()) 
 
 //valeurs du formulaire et produits sélectionnés dans un tableau
 const dataPost = {
-  products: ["5be1ed3f1c9d44000030b061", "5be1ef211c9d44000030b062"],
+  products: ["5be1ed3f1c9d44000030b061","5be1ef211c9d44000030b062", "5be9bc241c9d440000a730e7", "5be9bc241c9d440000a730e7", "5be9bc241c9d440000a730e7"],
   contact: formValues
 };
+console.log(dataPost);
 
 //renvoie à la page de confirmation
 sendData(dataPost)
