@@ -52,13 +52,12 @@ else{
   const showTotal = `
   <tr class="text-dark border border-dark text-right">
     <th scope="row">Le montant total est de : ${sum} €</th>
-  </tr>
-  `;
-
+  </tr>`;
   tableBasket.insertAdjacentHTML("beforeend", showTotal);
 
-  sum = localStorage.setItem("sum", sum);
 
+//J'envoie les données du total basket au local storage
+  let sumBasket = localStorage.setItem("sum", JSON.parse(sum));
 
 
 //-----------------------------Formulaire----------------------------- 
@@ -195,11 +194,13 @@ const dataPost = {
 };
 console.log(dataPost);
 
+
 //renvoie à la page de confirmation
 sendData(dataPost)
   .then(confirm  => {
     window.location.replace("confirmation.html?orderId=" + confirm.orderId);
 
+//j'envoie les données de l'order Id au local storage afin de les récupérer dans la page de confirmation
   orderId = localStorage.setItem("orderId", confirm.orderId);
   })
   .catch(function(error) {
