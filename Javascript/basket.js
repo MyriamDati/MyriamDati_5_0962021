@@ -4,15 +4,18 @@
 let productAdded = JSON.parse(localStorage.getItem("product"));
 
 //on crée le tableau des valeurs vide ou des valeurs ajoutés par l'utilisateur
-const tableBasket = document.querySelector(".card_recap");
+const tableBasket = document.getElementById("RecapitutatifCommande");
 
+//on ajoute une condition pour l'apparition du panier dans la page 
 if(productAdded === null){
+//si le panier est vide, il affiche "votre panier est vide sans valeur"
   const emptyBasket = `
     <div class="border border-secondary text-center p-2">Votre panier est vide</div>
   `;
 tableBasket.innerHTML = emptyBasket;
 }
 else{
+//si le panier est bien rempli, il affiche un tableau avec les données sélectionnées
   let fullBasket = `
     <thead class="thead-dark">
       <tr>
@@ -63,7 +66,7 @@ else{
 
 
 //-----------------------------Formulaire----------------------------- 
-const showForm = () => {
+function showForm() {
 const formUser = document.getElementById("container-produits-panier");
 
 //template pour la page html de la partie formulaire
@@ -91,7 +94,7 @@ const getForm = `
           <label for="mail">Email</label> 
           <input id="mail" type="text" class="form-control" placeholder="Entrer votre adresse mail" required>
       </div>
-      <a type="submit" class="btn btn-dark text-white">Confirmer mon achat</a>
+      <a type="submit" id="boutonConfirmation" class="btn btn-dark text-white">Confirmer mon achat</a>
     </form>
   `;
 //on indique qu'il doit s'ajouter avant la fin de la page
@@ -101,16 +104,16 @@ formUser.insertAdjacentHTML("afterend", getForm);
 showForm();
 
 //On créé le formulaire de renvoie
-const btnForm = document.querySelector(".btn");
+const btnForm = document.getElementById("boutonConfirmation");
 
 //on récupère les données du formulaire pour le local storage
 btnForm.addEventListener("click", (event) =>{
   const formValues = {
-    firstName: document.querySelector("#nom").value,
-    lastName: document.querySelector("#prenom").value,
-    address: document.querySelector("#adresse").value,
-    city: document.querySelector("#ville").value,
-    email: document.querySelector("#mail").value
+    firstName: document.getElementById("nom").value,
+    lastName: document.getElementById("prenom").value,
+    address: document.getElementById("adresse").value,
+    city: document.getElementById("ville").value,
+    email: document.getElementById("mail").value
   };
 
 //on envoie les données dans le local storage
@@ -177,7 +180,6 @@ function cityCheck() {
     return false;
   }
 };
-
 
 function mailCheck() {
   const mailUser = formValues.email;

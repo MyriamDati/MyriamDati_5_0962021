@@ -8,7 +8,7 @@ const getMessageOrder = `
     <div class="messageOrder">
       <p>Bonjour,</p>
       <p>Nous vous remercions pour votre achat !</p>
-      <p>Votre commande <span class="gras"> n° ${orderId} </span> d'un montant de <span class="gras"> ${sum}€ </span>, sera traitée dans les meilleures délais.</p>
+      <p>Votre commande <span class="gras"> n° ${orderId} </span> d'un montant de <span class="gras"> ${sum}€ </span>, sera traitée dans les meilleurs délais.</p>
       <p>Au plaisir de vous revoir !</p>
   </div>`;
 
@@ -17,3 +17,5 @@ const getMessageOrder = `
     document.getElementById("resultConfirmId").innerHTML = getMessageOrder
   }
 
+
+localStorage.clear();

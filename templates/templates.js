@@ -47,6 +47,3 @@ function getOneProductTemplate(product) {
     </div>
 </div>`
 }
-
-//Création du template de la page de confirmation
-
