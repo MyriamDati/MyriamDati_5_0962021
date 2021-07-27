@@ -36,7 +36,7 @@ else{
   }
   };
 
-  //----Ajout du montant total du panier----
+//----Ajout du montant total du panier----
   let totalBasket = [];
 
   for(let j = 0; j <productAdded.length; j++){
@@ -45,10 +45,11 @@ else{
     totalBasket.push(priceProduct)
   }
 
-  //addition du prix pour obtenir le montant total
+//addition du prix pour obtenir le montant total
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   const sum = totalBasket.reduce(reducer,0);
 
+// on crée le template pour la partie qui affiche la somme totale de l'achat
   const showTotal = `
   <tr class="text-dark border border-dark text-right">
     <th scope="row">Le montant total est de : ${sum} €</th>
@@ -60,10 +61,12 @@ else{
   let sumBasket = localStorage.setItem("sum", JSON.parse(sum));
 
 
+
 //-----------------------------Formulaire----------------------------- 
 const showForm = () => {
 const formUser = document.getElementById("container-produits-panier");
 
+//template pour la page html de la partie formulaire
 const getForm = `
   <form id="formulaire" method="POST" class="w-50 border border-secondary p-3 mt-5">
       <h3 class="informations text-dark">Informations personnelles</h3>
@@ -91,7 +94,7 @@ const getForm = `
       <a type="submit" class="btn btn-dark text-white">Confirmer mon achat</a>
     </form>
   `;
-
+//on indique qu'il doit s'ajouter avant la fin de la page
 formUser.insertAdjacentHTML("afterend", getForm);
 };
 
@@ -110,6 +113,7 @@ btnForm.addEventListener("click", (event) =>{
     email: document.querySelector("#mail").value
   };
 
+//on envoie les données dans le local storage
   localStorage.setItem("formValues", JSON.stringify(formValues));
 
 
@@ -120,6 +124,7 @@ const formDataLSObj = JSON.parse(formDataLS);
 
 
 //----------------Vérification des données du formulaire et leurs valeurs entrées----------------
+// je crée des vérifications dans le formulaire afin d'autoriser ou non l'envoie des données
 const checkString = (value) => {
   return /^[A-Za-z\s]{0,20}$/.test(value);
 }
@@ -187,6 +192,8 @@ function mailCheck() {
 if(nameCheck() && prenomCheck() && adressCheck() && cityCheck() && mailCheck()) {
     localStorage.setItem("formValues", JSON.stringify(formValues));
 
+
+
 //valeurs du formulaire et produits sélectionnés dans un tableau
 const dataPost = {
   products: ["5be1ed3f1c9d44000030b061","5be1ef211c9d44000030b062", "5be9bc241c9d440000a730e7", "5be9bc241c9d440000a730e7", "5be9bc241c9d440000a730e7"],
@@ -195,7 +202,7 @@ const dataPost = {
 console.log(dataPost);
 
 
-//renvoie à la page de confirmation
+//renvoie à la page de confirmation avec l'order Id
 sendData(dataPost)
   .then(confirm  => {
     window.location.replace("confirmation.html?orderId=" + confirm.orderId);
