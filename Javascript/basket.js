@@ -57,7 +57,7 @@ else{
 
   tableBasket.insertAdjacentHTML("beforeend", showTotal);
 
-
+  sum = localStorage.setItem("sum", sum);
 
 
 
@@ -199,11 +199,11 @@ console.log(dataPost);
 sendData(dataPost)
   .then(confirm  => {
     window.location.replace("confirmation.html?orderId=" + confirm.orderId);
+
+  orderId = localStorage.setItem("orderId", confirm.orderId);
   })
   .catch(function(error) {
       alert(error);
   })
 };
-
 });
-
