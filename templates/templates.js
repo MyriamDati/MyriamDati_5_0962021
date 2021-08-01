@@ -47,3 +47,43 @@ function getOneProductTemplate(product) {
     </div>
 </div>`
 }
+
+//Template pour la page html de la partie formulaire
+function getForm() { `
+  <form id="formulaire" method="POST" class="w-50 border border-secondary p-3 mt-5">
+      <h3 class="informations text-dark">Informations personnelles</h3>
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input id="nom" type="text" class="form-control" placeholder="Entrer votre nom" required>
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input id="prenom" type="text" class="form-control" placeholder="Entrer votre prénom" required>
+      </div>
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input id="adresse" type="text" class="form-control" placeholder="Entrer votre adresse" required>
+      </div>
+        <div class="form-group">
+          <label for="ville">Ville</label>
+          <input id="ville" type="text" class="form-control" placeholder="Entrer votre ville" required>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="mail">Email</label> 
+          <input id="mail" type="text" class="form-control" placeholder="Entrer votre adresse mail" required>
+      </div>
+      <a type="submit" id="boutonConfirmation" class="btn btn-dark text-white">Confirmer mon achat</a>
+    </form>
+  `}
+
+
+//Création du template de la page de confirmation
+function getMessageOrder() {
+  return `<div class="messageOrder">
+      <p>Bonjour,</p>
+      <p>Nous vous remercions pour votre achat !</p>
+      <p>Votre commande <span class="gras"> n° ${orderId} </span> d'un montant de <span class="gras"> ${sum}€ </span>, sera traitée dans les meilleurs délais.</p>
+      <p>Au plaisir de vous revoir !</p>
+  </div>`
+}
